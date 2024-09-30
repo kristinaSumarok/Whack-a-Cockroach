@@ -19,8 +19,14 @@ body{
     display: flex;
     flex-wrap: wrap;
     margin-top: 50px;
-
 }
+#board div{
+    width: 180px;
+    height: 180px;
+    background-image: url("./pipe.png");
+    background-size: cover;
+}
+
 h1{
     font-size: 50px;
     color: white;
