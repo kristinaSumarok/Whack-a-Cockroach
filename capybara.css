@@ -26,6 +26,10 @@ body{
     background-image: url("./pipe.png");
     background-size: cover;
 }
+#board div img{
+    width: 100px;
+    height: 100px;
+}
 
 h1{
     font-size: 50px;
