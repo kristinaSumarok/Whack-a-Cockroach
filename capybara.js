@@ -2,6 +2,7 @@ let currCockroach;
 let currCapybaraTile;
 let score = 0;
 let gameOver = false;
+let winSound = new Audio("./win.mp3");
 
 
 window.onload = function() {
@@ -74,6 +75,7 @@ function selectTile(){
     }
     else if (this == currCapybaraTile){
         document.getElementById("score").innerText = "Game Over: " + score.toString();
-        gameOver=true;
+        gameOver = true;
+        winSound.play();
     }
 }
