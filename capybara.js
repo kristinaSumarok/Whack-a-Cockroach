@@ -18,8 +18,8 @@ function setGame() {
         document.getElementById("board").appendChild(tile);
     }
 
-    setInterval(setCocroach, 1000);
-    setInterval(setCapybara, 2000);
+    setInterval(setCocroach, 2000);
+    setInterval(setCapybara, 3000);
 }
 
 function getRandomTile() {
@@ -36,6 +36,7 @@ function setCocroach() {
     }
    let cocroach = document.createElement("img");
     cocroach.src = "./cockroach.png";
+    cocroach.classList.add("appear-animate");
 
     let num = getRandomTile();
 
@@ -45,6 +46,11 @@ function setCocroach() {
 
     currCockroach = document.getElementById(num);
     currCockroach.appendChild(cocroach);
+
+    setTimeout(() => {
+        cocroach.classList.remove("appear-animate");  
+        cocroach.classList.add("disappear-animate");     
+    }, 1500); 
 }
 
 function setCapybara(){
@@ -57,6 +63,7 @@ function setCapybara(){
     }
     let capybara = document.createElement("img");
     capybara.src = "./capybara.png";
+    capybara.classList.add("appear-animate");
 
     let num = getRandomTile();
 
@@ -69,13 +76,20 @@ function setCapybara(){
 }
 
 function selectTile(){
+    if(gameOver){
+        return;
+    }
     if(this == currCockroach){
         score += 10;
         document.getElementById("score").innerText = score.toString();
+        currCockroach.innerHTML = "";
+        setCocroach();
     }
     else if (this == currCapybaraTile){
         document.getElementById("score").innerText = "Game Over: " + score.toString();
         gameOver = true;
+        currCapybaraTile.innerHTML = "";
+        currCockroach.innerHTML ="";
         winSound.play();
     }
 }

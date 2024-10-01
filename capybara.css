@@ -25,6 +25,7 @@ body{
     height: 180px;
     background-image: url("./pipe.png");
     background-size: cover;
+    
 }
 #board div img{
     width: 100px;
@@ -37,8 +38,7 @@ h1{
     margin: 0 auto;
     background-color: green;
     border-radius: 25px;
-    width: 540px;
-    
+    width: 500px;
 }
 h2{
     font-size: 50px;
@@ -46,6 +46,41 @@ h2{
     margin: 0 auto;
     background-color: green;
     border-radius: 25px;
-    width: 10em;
+    min-width: 75px;
+    display: inline-block; /* Make the element shrink or grow based on content */
     margin-top:30px;
+}
+@keyframes animateAppear {
+    0% {
+        clip-path: inset(0 0 50% 0);
+        transform: translateY(50%); 
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes animateDisappear {
+    0% {
+        clip-path: inset(0 0 0 0);
+        transform: translateY(0); 
+    }
+    100% {
+        clip-path: inset(0 0 50% 0);
+        transform: translateY(50%);
+    }
+}
+
+.appear-animate {
+    width: 100px;
+    height: 100px;
+    animation: animateAppear 0.5s ease; 
+    transform-origin: center; 
+}
+.disappear-animate {
+    width: 100px;
+    height: 100px;
+    animation: animateDisappear 0.5s ease; /* Apply the keyframes for moving down */
+    transform-origin: top;  /* Movement from the top */
 }
